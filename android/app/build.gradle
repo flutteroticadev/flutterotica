@@ -58,6 +58,14 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+       applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.all { output ->
+                def newApkName = "lit_reader-${variant.name}-${output.getFilter(com.android.build.OutputFile.ABI)}.apk"
+            outputFileName = newApkName
+            }
+        }
+    }
 }
 
 flutter {
