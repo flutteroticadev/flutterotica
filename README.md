@@ -1,16 +1,38 @@
-# lit_reader
+<h1 align="center" id="title">LitApp</h1>
 
-A new Flutter project.
+<p align="center"><img src="https://socialify.git.ci/ManMike512/lit_app_flutter/image?language=1&amp;owner=1&amp;name=1&amp;stargazers=1&amp;theme=Light" alt="project-image"></p>
 
-## Getting Started
+<p id="description">A Flutter based Android Client for Literotica</p>
 
-This project is a starting point for a Flutter application.
+<h2>🧐 Features</h2>
 
-A few resources to get you started if this is your first Flutter project:
+Here're some of the project's best features:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- View Activity Feed
+- Download Stories
+- Story Tracking with Page and Page position
+- View User Lists
+- Search By Tags Category or Words
+- Explore By Popular Tags or Categories
+- View Similar Stories All Chapters in a Series or More stories by the same Author
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h2>🛠️ Installation Steps:</h2>
+
+```
+1. Go to Releases Page
+```
+
+```
+2. Download apk for your platform
+```
+
+```
+3. Install APK (Allow from unknown sources when prompted)
+```
+
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+- Dart
+- Flutter
