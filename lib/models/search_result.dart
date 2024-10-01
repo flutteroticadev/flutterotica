@@ -1,12 +1,12 @@
-import 'package:lit_reader/models/submission.dart';
 import 'package:lit_reader/models/search_meta.dart';
+import 'package:lit_reader/models/submission.dart';
 
 class SearchResult {
-  final Meta meta;
+  final Meta? meta;
   final List<Submission> data;
 
   SearchResult({
-    required this.meta,
+    this.meta,
     required this.data,
   });
 
@@ -14,6 +14,13 @@ class SearchResult {
     return SearchResult(
       meta: Meta.fromJson(json['meta']),
       data: List<Submission>.from(json['data'].map((x) => Submission.fromJson(x))),
+    );
+  }
+
+  factory SearchResult.empty() {
+    return SearchResult(
+      meta: null,
+      data: [],
     );
   }
 }

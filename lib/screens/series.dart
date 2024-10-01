@@ -18,7 +18,8 @@ class _SeriesScreenState extends State<SeriesScreen> {
   Future<void> _fetchPage(int pageKey) async {
     try {
       final story = await api.getStory(widget.story.url);
-      final newItems = await api.getSeries(story.submission.series.meta.id);
+      final newItems =
+          story.submission?.series.meta.id != null ? await api.getSeries(story.submission!.series.meta.id) : <Submission>[];
 
       _pagingController.appendLastPage(newItems);
     } catch (error) {

@@ -31,7 +31,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
         _refreshAndAppendCategories(categories);
       }
     });
+
     _categoryPagingController.appendLastPage(categoryItems);
+
+    _categoryPagingController.addPageRequestListener((pageKey) {
+      litSearchController.getCategories();
+    });
 
     _tagPagingController.addPageRequestListener((pageKey) {
       _fetchPage();

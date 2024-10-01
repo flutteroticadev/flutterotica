@@ -88,21 +88,26 @@ class _StoryScreenState extends State<StoryScreen> {
     List<Future<Story>> futures = [];
 
     Story firstPageStory = await api.getStory(psubmission.url, page: 1);
-    hasNextChapter = firstPageStory.submission.series.meta.order.isNotEmpty &&
-        firstPageStory.submission.series.meta.order.lastOrNull != psubmission.id;
-    int index = firstPageStory.submission.series.meta.order.indexWhere((c) => c == psubmission!.id);
+    hasNextChapter = firstPageStory.submission != null
+        ? firstPageStory.submission!.series.meta.order.isNotEmpty &&
+            firstPageStory.submission!.series.meta.order.lastOrNull != psubmission.id
+        : false;
+    int index = firstPageStory.submission != null
+        ? firstPageStory.submission!.series.meta.order.indexWhere((c) => c == psubmission!.id)
+        : 0;
     if (hasNextChapter) {
-      nextChapter = firstPageStory.submission.series.meta.order[index + 1];
+      nextChapter = firstPageStory.submission!.series.meta.order[index + 1];
     }
     futures.add(Future.value(firstPageStory));
-
-    for (int i = 2; i <= firstPageStory.meta.pagesCount; i++) {
-      futures.add(api.getStory(psubmission.url, page: i));
+    if (firstPageStory.meta?.pagesCount != null) {
+      for (int i = 2; i <= firstPageStory.meta!.pagesCount; i++) {
+        futures.add(api.getStory(psubmission.url, page: i));
+      }
     }
 
     List<Story> stories = await Future.wait(futures);
     for (int i = 0; i < stories.length; i++) {
-      final page = StoryPage(page: i + 1, content: stories[i].pageText);
+      final page = StoryPage(page: i + 1, content: stories[i].pageText!);
       setState(() {
         pages.add(page);
       });

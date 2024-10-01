@@ -65,9 +65,7 @@ class _FeedScreenState extends State<FeedScreen> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: const Text('Feed'),
       ),
-      body: Obx(
-        () => body(),
-      ),
+      body: body(),
     );
   }
 

@@ -2,14 +2,14 @@ import 'package:lit_reader/models/meta.dart';
 import 'package:lit_reader/models/submission.dart';
 
 class Story {
-  final Meta meta;
-  final Submission submission;
-  final String pageText;
+  final Meta? meta;
+  final Submission? submission;
+  final String? pageText;
 
   Story({
-    required this.meta,
-    required this.submission,
-    required this.pageText,
+    this.meta,
+    this.submission,
+    this.pageText,
   });
 
   factory Story.fromJson(Map<String, dynamic> json) {
@@ -18,5 +18,9 @@ class Story {
       submission: Submission.fromJson(json['submission']),
       pageText: json['pageText'],
     );
+  }
+
+  factory Story.empty() {
+    return Story();
   }
 }

@@ -24,7 +24,9 @@ class _AuthorsStoriesScreenState extends State<AuthorsStoriesScreen> {
       if (pageKey == 1) {
         final result = await api.getAuthorStories(widget.author.username);
         final newItems = result.data;
-        maxPages = (result.meta.total / (result.meta.pageSize)).ceil();
+        if (result.meta != null) {
+          maxPages = (result.meta!.total / (result.meta!.pageSize)).ceil();
+        }
 
         if (pageKey == maxPages) {
           _pagingController.appendLastPage(newItems);

@@ -49,6 +49,8 @@ class API {
     } catch (e) {
       // ignore: avoid_print
       print(e);
+      print(e.toString());
+      return Token(token: null, expires: null);
     } finally {
       //
     }
@@ -80,6 +82,7 @@ class API {
     } catch (e) {
       // ignore: avoid_print
       print(e);
+      toast(e.toString());
       return Token(token: null, expires: null);
     }
   }
@@ -116,6 +119,11 @@ class API {
       } else {
         return false;
       }
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+      toast(e.toString());
+      return false;
     } finally {
       // loginController.dispose();
     }
@@ -136,6 +144,10 @@ class API {
       );
 
       return Story.fromJson(response.data);
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return Story.empty();
     } finally {}
   }
 
@@ -204,6 +216,10 @@ class API {
       final List<Category> categories = response.data.map<Category>((list) => Category.fromJson(list)).toList();
 
       return categories;
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return [];
     } finally {}
   }
 
@@ -248,7 +264,11 @@ class API {
       final SearchResult searchResult = SearchResult.fromJson(response.data);
 
       return searchResult;
-    } finally {}
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return SearchResult.empty();
+    }
   }
 
   Future<List<Submission>> getSimilarStories(String storyURL) async {
@@ -267,7 +287,11 @@ class API {
       final List<Submission> series = response.data.map<Submission>((list) => Submission.fromJson(list)).toList();
 
       return series;
-    } finally {}
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return [];
+    }
   }
 
   Future<ActivityWall> getFeed({int limit = 25, int? lastId}) async {
@@ -310,6 +334,7 @@ class API {
     } catch (e) {
       // ignore: avoid_print
       print(e);
+      toast(e.toString());
       return ActivityWall(data: [], new_activity_count: 0);
     } finally {}
   }
@@ -355,7 +380,11 @@ class API {
       final SearchResult searchResult = SearchResult.fromJson(response.data);
 
       return searchResult;
-    } finally {}
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return SearchResult.empty();
+    }
   }
 
   Future<CategorySearchResult> getCategoryStories({
@@ -400,7 +429,11 @@ class API {
       final CategorySearchResult searchResult = CategorySearchResult.fromJson(response.data);
 
       return searchResult;
-    } finally {}
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return CategorySearchResult.empty();
+    }
   }
 
   Future<SearchResult> beginSearchByTags(List<String> tagList,
@@ -444,7 +477,11 @@ class API {
       final SearchResult searchResult = SearchResult.fromJson(response.data);
 
       return searchResult;
-    } finally {}
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return SearchResult.empty();
+    }
   }
 
   Future<List<Lists>> getLists() async {
@@ -479,6 +516,7 @@ class API {
       // ignore: avoid_print
 
       print(e);
+      toast(e.toString());
       return [];
     } finally {
       // loginController.dispose();
@@ -528,7 +566,11 @@ class API {
       }
 
       return false;
-    } finally {}
+    } catch (e) {
+      print(e);
+      toast(e.toString());
+      return false;
+    }
   }
 
   Future<List<Tag>> getPopularTags() async {
@@ -555,6 +597,7 @@ class API {
       return [];
     } catch (e) {
       print(e);
+      toast(e.toString());
       return [];
     } finally {}
   }
@@ -593,6 +636,7 @@ class API {
       return [];
     } catch (e) {
       print(e);
+      toast(e.toString());
       return [];
     } finally {}
   }
@@ -629,6 +673,11 @@ class API {
       final ListItem listItem = ListItem.fromJson(response.data);
 
       return listItem;
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+      toast(e.toString());
+      return ListItem(list: null, works: null);
     } finally {}
   }
 }

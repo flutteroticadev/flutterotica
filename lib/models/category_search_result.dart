@@ -1,12 +1,12 @@
 import 'package:lit_reader/models/submission.dart';
 
 class CategorySearchResult {
-  final CategoryMeta meta;
+  final CategoryMeta? meta;
   final List<Submission> data;
   final int total;
 
   CategorySearchResult({
-    required this.meta,
+    this.meta,
     required this.data,
     required this.total,
   });
@@ -16,6 +16,13 @@ class CategorySearchResult {
       meta: CategoryMeta.fromJson(json['meta']),
       data: List<Submission>.from(json['submissions'].map((x) => Submission.fromJson(x))),
       total: int.tryParse(json['total'].toString()) ?? 0,
+    );
+  }
+
+  factory CategorySearchResult.empty() {
+    return CategorySearchResult(
+      data: [],
+      total: 0,
     );
   }
 }
