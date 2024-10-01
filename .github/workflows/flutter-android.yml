@@ -32,7 +32,7 @@ jobs:
 
       - name: Rename APKs
         run: |
-          for file in build/app/outputs/flutter-apk/app-*.apk; do
+          for file in build/app/outputs/flutter-apk/app-*; do
             mv "$file" "${file/app-/lit-app-}"
           done
 
