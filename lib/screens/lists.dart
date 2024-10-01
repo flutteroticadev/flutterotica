@@ -42,7 +42,7 @@ class _ListScreenState extends State<ListScreen> {
             ),
           ],
         );
-      } else if (loginController.loginState == LoginState.loggedout) {
+      } else if (loginController.loginState == LoginState.loggedout || loginController.loginState == LoginState.failure) {
         return const LoggedInError(
           text: "You must be logged in to view your lists",
         );

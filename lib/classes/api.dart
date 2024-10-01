@@ -49,7 +49,7 @@ class API {
     } catch (e) {
       // ignore: avoid_print
       print(e);
-      print(e.toString());
+      toast(e.toString());
       return Token(token: null, expires: null);
     } finally {
       //

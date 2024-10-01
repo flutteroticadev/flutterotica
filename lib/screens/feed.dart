@@ -90,7 +90,7 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
           ],
         );
-      } else if (loginController.loginState == LoginState.loggedout) {
+      } else if (loginController.loginState == LoginState.loggedout || loginController.loginState == LoginState.failure) {
         return const Padding(
           padding: EdgeInsets.symmetric(vertical: 1),
           child: LoggedInError(
