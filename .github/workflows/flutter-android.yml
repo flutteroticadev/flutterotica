@@ -26,8 +26,15 @@ jobs:
           channel: "stable"
       - name: Install Dependencies
         run: flutter pub get
+
       - name: Build APK
         run: flutter build apk --release --split-per-abi
+
+      - name: Rename APKs
+        run: |
+          for file in build/app/outputs/flutter-apk/app-*.apk; do
+            mv "$file" "${file/app-/lit-app-}"
+          done
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
