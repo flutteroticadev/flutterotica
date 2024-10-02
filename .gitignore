@@ -53,3 +53,7 @@ app.*.map.json
 /web
 /IconKitchen-Output
 .IconKitchen-Output.zip
+
+#Project files
+upload-keystore.jks
+upload-keystore.jks.base64
