@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lit_reader/screens/log_screen.dart';
 import 'package:lit_reader/screens/login.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -33,6 +34,16 @@ class DrawerWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.note),
+            title: const Text('Logs'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LogScreen()),
               );
             },
           ),

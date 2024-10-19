@@ -32,9 +32,10 @@ class API {
     Account account = Account(login: username, password: password);
     try {
       dioController.dio.interceptors.add(CookieManager(cookieJar));
+      const url = '${authUrl}login';
 
       final response = await dioController.dio.post(
-        '${authUrl}login',
+        url,
         data: account.toJson(),
         options: Options(contentType: Headers.jsonContentType),
       );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lit_reader/controllers/dio_controller.dart';
 import 'package:lit_reader/controllers/history_download_screen_controller.dart';
 import 'package:lit_reader/controllers/lists_controller.dart';
+import 'package:lit_reader/controllers/log_controller.dart';
 import 'package:lit_reader/controllers/login_controller.dart';
 import 'package:lit_reader/controllers/search_controller.dart' as searchController;
 import 'package:lit_reader/env/colors.dart';
@@ -28,6 +29,7 @@ Future<void> main() async {
 
 _initServices() {
   try {
+    ioc.registerSingleton<LogController>(LogController());
     ioc.registerSingleton<DioController>(DioController());
     ioc.registerSingleton<LoginController>(LoginController());
     ioc.registerSingleton<searchController.SearchController>(searchController.SearchController());
@@ -64,7 +66,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
     initPrefs();
+    logController.addLog('App started');
   }
 
   @override

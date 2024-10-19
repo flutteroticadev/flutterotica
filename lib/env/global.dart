@@ -8,6 +8,7 @@ import 'package:lit_reader/classes/search_config.dart';
 import 'package:lit_reader/controllers/dio_controller.dart';
 import 'package:lit_reader/controllers/history_download_screen_controller.dart';
 import 'package:lit_reader/controllers/lists_controller.dart';
+import 'package:lit_reader/controllers/log_controller.dart';
 import 'package:lit_reader/controllers/login_controller.dart';
 import 'package:lit_reader/controllers/search_controller.dart' as searchController;
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -48,6 +49,7 @@ navigateToSearch(SearchConfig searchConfig) {
 }
 
 //controllers
+LogController get logController => Get.put(LogController());
 DioController get dioController => Get.put(DioController());
 LoginController get loginController => Get.put(LoginController());
 searchController.SearchController get litSearchController => Get.put(searchController.SearchController());
