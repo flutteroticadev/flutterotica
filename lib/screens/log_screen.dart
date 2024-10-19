@@ -12,6 +12,16 @@ class LogScreen extends StatefulWidget {
 }
 
 class _LogScreenState extends State<LogScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +42,7 @@ class _LogScreenState extends State<LogScreen> {
             ),
             child: Expanded(
               child: SingleChildScrollView(
+                controller: _scrollController,
                 scrollDirection: Axis.vertical,
                 child: Expanded(
                   child: Column(
