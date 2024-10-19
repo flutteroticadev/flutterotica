@@ -12,15 +12,15 @@ class DioLoggingInterceptor extends Interceptor {
     handler.next(options); // Continue with the request
   }
 
-  // @override
-  // void onResponse(Response response, ResponseInterceptorHandler handler) {
-  //   if (response.requestOptions.method == 'POST' || response.requestOptions.method == 'GET') {
-  //     print('Response [${response.requestOptions.method}] => URL: ${response.requestOptions.uri}');
-  //     print('Status Code: ${response.statusCode}');
-  //     print('Data: ${response.data}');
-  //   }
-  //   handler.next(response); // Continue with the response
-  // }
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    if (response.requestOptions.method == 'POST' || response.requestOptions.method == 'GET') {
+      logController.addLog('Response [${response.requestOptions.method}] => URL: ${response.requestOptions.uri}');
+      logController.addLog('Status Code: ${response.statusCode}');
+      logController.addLog('Data: ${response.data}');
+    }
+    handler.next(response); // Continue with the response
+  }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {

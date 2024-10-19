@@ -52,7 +52,7 @@ class _LogScreenState extends State<LogScreen> {
                                   log.log,
                                   style: const TextStyle(color: Colors.white),
                                   softWrap: true,
-                                  maxLines: 10,
+                                  maxLines: 5000,
                                 ),
                               ),
                             ],
