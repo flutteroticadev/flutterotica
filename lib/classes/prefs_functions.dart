@@ -34,33 +34,4 @@ class PrefsFunctions {
       scrollController.jumpTo(lastPagePosition);
     });
   }
-
-  // cacheLists({required List<Lists> lists}) {
-  //   List<Map<String, dynamic>> listsMap = lists.map((list) => list.toJson()).toList();
-
-  //   String jsonString = jsonEncode(listsMap);
-
-  //   prefs.setString("lists", jsonString);
-  // }
-
-  // List<Lists> fetchLists() {
-  //   String? lists = prefs.getString("lists");
-
-  //   if (lists != null) {
-  //     List<dynamic> jsonList = jsonDecode(lists);
-
-  //     List<Lists> listsMap = jsonList.map((list) => Lists.fromJson(list)).toList();
-  //     return listsMap;
-  //   }
-  //   return [];
-  // }
-
-  // refreshLists() async {
-  //   List<Lists> lists = await api.getLists();
-  //   cacheLists(lists: lists);
-  // }
-
-  // clearListCache() {
-  //   prefs.remove("lists");
-  // }
 }

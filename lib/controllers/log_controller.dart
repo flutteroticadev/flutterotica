@@ -13,6 +13,7 @@ class LogItem {
 class LogController extends GetxController {
   final _logs = <LogItem>[].obs;
   List<LogItem> get logs => _logs.toList();
+  RxList<LogItem> get logsRx => _logs;
 
   int logLimit = 1000;
 

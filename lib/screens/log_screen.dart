@@ -19,6 +19,18 @@ class _LogScreenState extends State<LogScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      _scrollController.addListener(() {
+        if (_scrollController.offset >= _scrollController.position.maxScrollExtent) {
+          logController.logsRx.listen((_) {
+            _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+                duration: Durations.long4, curve: Curves.easeInOut);
+          });
+        }
+      });
+      // logController.logsRx.listen((_) {
+      //   _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+      //       duration: Durations.long4, curve: Curves.easeInOut);
+      // });
     });
   }
 
