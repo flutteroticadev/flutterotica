@@ -52,38 +52,34 @@ class _LogScreenState extends State<LogScreen> {
               color: Colors.black,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Expanded(
-              child: SingleChildScrollView(
-                controller: _scrollController,
-                scrollDirection: Axis.vertical,
-                child: Expanded(
-                  child: Column(
-                    children: [
-                      for (LogItem log in logController.logs)
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${DateFormat('HH:mm:ss').format(log.time)}: ",
-                                style: const TextStyle(color: Colors.greenAccent),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  log.log,
-                                  style: const TextStyle(color: Colors.white),
-                                  softWrap: true,
-                                  maxLines: 5000,
-                                ),
-                              ),
-                            ],
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  for (LogItem log in logController.logs)
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${DateFormat('HH:mm:ss').format(log.time)}: ",
+                            style: const TextStyle(color: Colors.greenAccent),
                           ),
-                        )
-                    ],
-                  ),
-                ),
+                          Flexible(
+                            child: Text(
+                              log.log,
+                              style: const TextStyle(color: Colors.white),
+                              softWrap: true,
+                              maxLines: 5000,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                ],
               ),
             ),
           ),
