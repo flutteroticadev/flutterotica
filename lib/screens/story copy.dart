@@ -34,7 +34,7 @@ class _StoryScreenState extends State<StoryScreen> {
   int nextChapter = 0;
   bool hasNextChapter = false;
   bool isBusy = false;
-  bool isFabVisible = true;
+  bool isFabVisible = false;
   List<int> existingLists = [];
 
   Future<void>? _fetchPagesFuture;
@@ -309,16 +309,16 @@ class _StoryScreenState extends State<StoryScreen> {
                         child: Column(
                           children: [
                             AnimatedContainer(
-                              height: isFabVisible ? kToolbarHeight : 0.0,
+                              height: 0.0,
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeInOut,
                               child: Container(
                                 color: Colors.transparent,
                               ),
                             ),
-                            SizedBox(
-                              height: isFabVisible ? 20 : 30,
-                            ),
+                            // SizedBox(
+                            //   height: isFabVisible ? 30 : 30,
+                            // ),
                             Html(
                               style: {
                                 'body': Style(

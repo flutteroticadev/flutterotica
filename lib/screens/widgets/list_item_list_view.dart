@@ -71,9 +71,11 @@ class _ListItemListViewState extends State<ListItemListView> {
     await api.toggleListItem(submission.id, listId!, false);
 
     List<Submission>? olditems = _pagingController.itemList;
-    if (olditems != null) olditems.removeWhere((element) => element.id == submission.id);
+    olditems?.removeWhere((element) => element.id == submission.id);
     _pagingController.itemList = [];
-    _pagingController.appendLastPage(olditems!);
+    if (olditems != null) {
+      _pagingController.appendLastPage(olditems);
+    }
   }
 
   @override

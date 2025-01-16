@@ -55,7 +55,6 @@ dependencies:
   overlay_support: ^2.1.0
   flutter_html: ^3.0.0-beta.2
   flutter_speed_dial: ^7.0.0
-  flutter_slidable: ^3.1.0
   advanced_chips_input: ^0.1.5
   get_it: ^8.0.0
   auto_size_text: ^3.0.0
@@ -64,6 +63,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_slidable:
+    git:
+      url: https://github.com/letsar/flutter_slidable.git
+      ref: master
   # text_reader:
   #   path: ../text_reader
 
