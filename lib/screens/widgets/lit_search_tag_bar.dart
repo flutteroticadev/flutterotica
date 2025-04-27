@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:lit_reader/controllers/search_controller.dart' as litController;
+import 'package:lit_reader/controllers/search_controller.dart' as lit_controller;
 import 'package:lit_reader/env/colors.dart';
 import 'package:lit_reader/models/submission.dart';
 
@@ -22,7 +22,7 @@ class LitSearchTagBar extends StatefulWidget {
   final PagingController<int, Submission> pagingController;
   final TextEditingController? searchFieldTextController;
 
-  final litController.SearchController? litSearchController;
+  final lit_controller.SearchController? litSearchController;
   final void Function()? onChanged;
   final double margin;
 
@@ -64,8 +64,8 @@ class _LitSearchTagBarState extends State<LitSearchTagBar> {
                         spacing: 8,
                         children: widget.litSearchController!.tagList
                             .map((tag) => Chip(
-                                  side: const BorderSide(color: kred),
-                                  backgroundColor: kred,
+                                  side: const BorderSide(color: kRed),
+                                  backgroundColor: kRed,
                                   label: Text(tag),
                                   onDeleted: () {
                                     widget.litSearchController!.tagList.remove(tag);
@@ -92,7 +92,7 @@ class _LitSearchTagBarState extends State<LitSearchTagBar> {
                 textInputAction: TextInputAction.search,
                 validator: (value) {
                   if (value == null || value.isEmpty || value.length < 3) {
-                    return 'Please enter atleast 3 characters';
+                    return 'Please enter at least 3 characters';
                   }
                   return null;
                 },

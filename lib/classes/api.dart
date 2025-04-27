@@ -67,8 +67,8 @@ class API {
       );
 
       if (validateResponse.statusCode != 200) {
-        Token relog = await loginController.login();
-        return relog;
+        Token refreshedToken = await loginController.login();
+        return refreshedToken;
       }
 
       var tokenResponse = validateResponse.data;
@@ -76,9 +76,9 @@ class API {
 
       Map<String, dynamic> decodedToken = JwtDecoder.decode(tokenResponse);
       int timestamp = decodedToken['exp'];
-      DateTime expdate = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+      DateTime expirationDate = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
 
-      Token token = Token(token: tokenResponse, expires: expdate);
+      Token token = Token(token: tokenResponse, expires: expirationDate);
       return token;
     } catch (e) {
       // ignore: avoid_print
@@ -90,7 +90,7 @@ class API {
 
   logout() async {
     await loginController.isTokenValid();
-    if (loginController.loginState != LoginState.loggedin) {
+    if (loginController.loginState != LoginState.loggedIn) {
       // loginController.dispose();
       return false;
     }
@@ -110,12 +110,12 @@ class API {
 
       if (response.statusCode == 200 || response.statusCode == 401) {
         loginController.token = Token();
-        loginController.loginState = LoginState.loggedout;
-        final SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.remove('token');
+        loginController.loginState = LoginState.loggedOut;
+        final SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.remove('token');
         loginController.password = "";
-        // prefs.remove('username');
-        prefs.remove('password');
+        // preferences.remove('username');
+        preferences.remove('password');
         return true;
       } else {
         return false;
@@ -146,7 +146,7 @@ class API {
 
       return Story.fromJson(response.data);
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return Story.empty();
     } finally {}
@@ -218,7 +218,7 @@ class API {
 
       return categories;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return [];
     } finally {}
@@ -266,7 +266,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return SearchResult.empty();
     }
@@ -289,7 +289,7 @@ class API {
 
       return series;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return [];
     }
@@ -297,7 +297,7 @@ class API {
 
   Future<ActivityWall> getFeed({int limit = 25, int? lastId}) async {
     await loginController.isTokenValid();
-    if (loginController.loginState != LoginState.loggedin) {
+    if (loginController.loginState != LoginState.loggedIn) {
       if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
         await loginController.login();
       } else {
@@ -313,7 +313,7 @@ class API {
       }
       url += '}';
 
-      print("Called: $url");
+      _logger.info('Called: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -382,7 +382,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return SearchResult.empty();
     }
@@ -415,7 +415,7 @@ class API {
     url += '&page=$page';
     url += '&limit=$limit';
 
-    print("Called: $url");
+    _logger.info('Called: $url');
 
     try {
       final response = await dioController.dio.get(
@@ -431,7 +431,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return CategorySearchResult.empty();
     }
@@ -479,7 +479,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return SearchResult.empty();
     }
@@ -487,7 +487,7 @@ class API {
 
   Future<List<Lists>> getLists() async {
     await loginController.isTokenValid();
-    if (loginController.loginState != LoginState.loggedin) {
+    if (loginController.loginState != LoginState.loggedIn) {
       if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
         await loginController.login();
       } else {
@@ -514,9 +514,7 @@ class API {
 
       return lists;
     } catch (e) {
-      // ignore: avoid_print
-
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return [];
     } finally {
@@ -524,9 +522,9 @@ class API {
     }
   }
 
-  Future<bool> toggleListItem(int storyid, int listid, bool addToList) async {
+  Future<bool> toggleListItem(int storyId, int listId, bool addToList) async {
     await loginController.isTokenValid();
-    if (loginController.loginState != LoginState.loggedin) {
+    if (loginController.loginState != LoginState.loggedIn) {
       if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
         await loginController.login();
       } else {
@@ -535,7 +533,7 @@ class API {
     }
 
     try {
-      final url = '${apiUrl}stories/$storyid/lists/$listid';
+      final url = '${apiUrl}stories/$storyId/lists/$listId';
       if (addToList) {
         final response = await dioController.dio.put(
           url,
@@ -568,7 +566,7 @@ class API {
 
       return false;
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return false;
     }
@@ -577,7 +575,7 @@ class API {
   Future<List<Tag>> getPopularTags() async {
     try {
       const url = '${apiUrl}tagsportal/top?params={"limit":500,"periodCheck":true,"period":"all","language":1}';
-      print('Called: $url');
+      _logger.info('Called: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -597,15 +595,15 @@ class API {
 
       return [];
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return [];
     } finally {}
   }
 
-  Future<List<int>> getListsWithStory(String storyid) async {
+  Future<List<int>> getListsWithStory(String storyId) async {
     await loginController.isTokenValid();
-    if (loginController.loginState != LoginState.loggedin) {
+    if (loginController.loginState != LoginState.loggedIn) {
       if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
         await loginController.login();
       } else {
@@ -615,7 +613,7 @@ class API {
     }
 
     try {
-      final url = '${apiUrl}stories/$storyid/lists';
+      final url = '${apiUrl}stories/$storyId/lists';
 
       final response = await dioController.dio.get(
         url,
@@ -636,7 +634,7 @@ class API {
 
       return [];
     } catch (e) {
-      print(e);
+      _logger.info(e);
       toast(e.toString());
       return [];
     } finally {}
@@ -644,7 +642,7 @@ class API {
 
   Future<ListItem> getListItems(String listUrl, {int page = 1, String? searchTerm}) async {
     await loginController.isTokenValid();
-    if (loginController.loginState != LoginState.loggedin) {
+    if (loginController.loginState != LoginState.loggedIn) {
       if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
         await loginController.login();
       } else {

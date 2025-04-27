@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               item: ItemConfig(
                 icon: historyDownloadController.selectedTabIcon,
                 title: (historyDownloadController.selectedTabName),
-                activeForegroundColor: kred,
+                activeForegroundColor: kRed,
                 inactiveForegroundColor: Colors.grey,
               ),
             ),
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
               item: ItemConfig(
                 icon: const Icon(Ionicons.bar_chart),
                 title: ("Explore"),
-                activeForegroundColor: kred,
+                activeForegroundColor: kRed,
                 inactiveForegroundColor: Colors.grey,
               ),
             ),
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.white,
                 ),
                 title: ("Search"),
-                activeForegroundColor: kred,
+                activeForegroundColor: kRed,
                 inactiveForegroundColor: Colors.grey,
               ),
             ),
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               item: ItemConfig(
                 icon: const Icon(Ionicons.newspaper),
                 title: ("Feed"),
-                activeForegroundColor: kred,
+                activeForegroundColor: kRed,
                 inactiveForegroundColor: Colors.grey,
               ),
             ),
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
               item: ItemConfig(
                 icon: const Icon(Ionicons.list),
                 title: ("Lists"),
-                activeForegroundColor: kred,
+                activeForegroundColor: kRed,
                 inactiveForegroundColor: Colors.grey,
               ),
             ),

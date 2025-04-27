@@ -88,7 +88,7 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
       appBar: AppBar(
         title: const Text("Details"),
         actions: [
-          if (loginController.loginState == LoginState.loggedin)
+          if (loginController.loginState == LoginState.loggedIn)
             IconButton(
               onPressed: () {
                 showDialog(
@@ -106,7 +106,7 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
                   ? const Icon(Icons.bookmark_border)
                   : const Icon(
                       Icons.bookmark,
-                      color: kred,
+                      color: kRed,
                     ),
             ),
           IconButton(
@@ -169,10 +169,10 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
           const SizedBox(height: 20),
           Row(
             children: [
-              if (widget.submission.isNew) const LitBadge(text: 'New', color: knewTag),
-              if (widget.submission.isHot) const LitBadge(text: 'Hot', color: khotTag),
-              if (widget.submission.writersPick) const LitBadge(text: 'Writers Pick', color: kwriterTag),
-              if (widget.submission.contestWinner == 1) const LitBadge(text: 'Contest Winner', color: kwinnerTag),
+              if (widget.submission.isNew) const LitBadge(text: 'New', color: kNewTag),
+              if (widget.submission.isHot) const LitBadge(text: 'Hot', color: kHotTag),
+              if (widget.submission.writersPick) const LitBadge(text: 'Writers Pick', color: kWriterTag),
+              if (widget.submission.contestWinner == 1) const LitBadge(text: 'Contest Winner', color: kWinnerTag),
             ],
           ),
           const SizedBox(height: 10),
@@ -194,7 +194,7 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
                       child: AutoSizeText(
                         widget.submission.author!.username,
                         style: const TextStyle(
-                          color: kred,
+                          color: kRed,
                           fontSize: 25,
                         ),
                         maxLines: 1,
@@ -278,7 +278,7 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
               style: TextStyle(
                 height: height,
                 fontSize: fontSize,
-                color: kred,
+                color: kRed,
               ),
             ),
           ),
@@ -290,7 +290,7 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: kred,
+        backgroundColor: kRed,
         foregroundColor: Colors.white,
         side: const BorderSide(color: Colors.black),
         shape: const RoundedRectangleBorder(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/controllers/search_controller.dart' as litcontroller;
+import 'package:lit_reader/controllers/search_controller.dart' as lit_controller;
 import 'package:lit_reader/env/colors.dart';
 import 'package:lit_reader/env/global.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
@@ -9,7 +9,7 @@ class LitMultiCategories extends StatefulWidget {
     super.key,
     required this.searchController,
   });
-  final litcontroller.SearchController searchController;
+  final lit_controller.SearchController searchController;
 
   @override
   State<LitMultiCategories> createState() => _LitMultiCategoriesState();
@@ -61,7 +61,7 @@ class _LitMultiCategoriesState extends State<LitMultiCategories> {
                 .toList()
           ],
           selectedOptionTextColor: Colors.white,
-          selectedOptionBackgroundColor: kred,
+          selectedOptionBackgroundColor: kRed,
           optionsBackgroundColor: Colors.black87,
           // backgroundColor: Colors.transparent,
           fieldBackgroundColor: Colors.transparent,
@@ -70,7 +70,7 @@ class _LitMultiCategoriesState extends State<LitMultiCategories> {
             wrapType: WrapType.wrap,
             runSpacing: 0,
             padding: EdgeInsets.all(5),
-            backgroundColor: kred,
+            backgroundColor: kRed,
           ),
           dropdownHeight: 300,
           borderRadius: 5,

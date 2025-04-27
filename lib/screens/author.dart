@@ -155,7 +155,7 @@ class _AuthorScreenState extends State<AuthorScreen> {
                     fontStyle: FontStyle.italic,
                     color: Colors.grey,
                   ),
-                  linkStyle: const TextStyle(color: kred, decoration: TextDecoration.none),
+                  linkStyle: const TextStyle(color: kRed, decoration: TextDecoration.none),
                 ),
               ),
               if (author.biography != null && author.biography!.isNotEmpty)
@@ -192,7 +192,7 @@ class _AuthorScreenState extends State<AuthorScreen> {
             style: TextStyle(
               height: height,
               fontSize: fontSize,
-              color: kred,
+              color: kRed,
             ),
           ),
       ],
@@ -203,7 +203,7 @@ class _AuthorScreenState extends State<AuthorScreen> {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: kred,
+        backgroundColor: kRed,
         foregroundColor: Colors.white,
         side: const BorderSide(color: Colors.black),
         shape: const RoundedRectangleBorder(

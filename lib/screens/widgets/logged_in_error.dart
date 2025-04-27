@@ -20,12 +20,12 @@ class LoggedInError extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: kred.withOpacity(0.1),
+              color: kRed.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
               text,
-              style: const TextStyle(fontSize: 25, color: kred),
+              style: const TextStyle(fontSize: 25, color: kRed),
             ),
           ),
         ],

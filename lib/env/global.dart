@@ -23,10 +23,10 @@ PrefsFunctions prefsFunctions = PrefsFunctions();
 
 API api = API();
 
-late SharedPreferences prefs;
+late SharedPreferences preferences;
 
 Future<void> initSharedPreferences() async {
-  prefs = await SharedPreferences.getInstance();
+  preferences = await SharedPreferences.getInstance();
 }
 
 PersistentTabController persistentTabcontroller = PersistentTabController(initialIndex: 0);

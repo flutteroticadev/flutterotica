@@ -66,10 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    loginController.loginState == LoginState.loggedin ? loginController.logout() : loginController.login();
+                    loginController.loginState == LoginState.loggedIn ? loginController.logout() : loginController.login();
                   },
                   child: Text(
-                      (loginController.loginState == LoginState.loggedout || loginController.loginState == LoginState.failure)
+                      (loginController.loginState == LoginState.loggedOut || loginController.loginState == LoginState.failure)
                           ? 'Login'
                           : 'Logout'),
                 ),

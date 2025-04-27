@@ -8,7 +8,7 @@ class LitChip extends StatelessWidget {
     this.textFontSize = 16,
     required this.label,
     this.labelFontSize = 16,
-    this.textBackgroundColor = kred,
+    this.textBackgroundColor = kRed,
     this.labelBackgroundColor = Colors.transparent,
   });
 

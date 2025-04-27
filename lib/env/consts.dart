@@ -6,7 +6,7 @@ const litUrl = 'https://literotica.com/';
 const app_id = '24b7c3f9d904ebd679299b1ce5506bc305a5ab40';
 const api_key = '70b3a71911b398a98d3dac695f34cf279c270ea0';
 
-enum LoginState { loggedout, loading, loggedin, failure }
+enum LoginState { loggedOut, loading, loggedIn, failure }
 
 enum SearchSortField { relevant, dateAsc, dateDesc, voteAsc, voteDesc, commentsAsc, commentsDesc }
 

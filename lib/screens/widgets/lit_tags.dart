@@ -25,7 +25,7 @@ class LitTags extends StatelessWidget {
                   '#${tag.tag}',
                   style: TextStyle(
                     height: height ?? 1.6,
-                    color: kred,
+                    color: kRed,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -34,7 +34,7 @@ class LitTags extends StatelessWidget {
                 '#${tag.tag}',
                 style: TextStyle(
                   height: height ?? 1.6,
-                  color: kred,
+                  color: kRed,
                   fontWeight: FontWeight.bold,
                 ),
               ),

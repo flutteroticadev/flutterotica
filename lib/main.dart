@@ -50,15 +50,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Future<void> initPrefs() async {
-    loginController.username = prefs.getString('username') ?? '';
-    loginController.password = prefs.getString('password') ?? '';
-    loginController.token = loginController.token.copyWith(token: prefs.getString('token') ?? '');
+    loginController.username = preferences.getString('username') ?? '';
+    loginController.password = preferences.getString('password') ?? '';
+    loginController.token = loginController.token.copyWith(token: preferences.getString('token') ?? '');
     if (await loginController.isTokenValid()) {
-      loginController.loginState = LoginState.loggedin;
+      loginController.loginState = LoginState.loggedIn;
     } else if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
       loginController.refreshToken();
     } else {
-      loginController.loginState = LoginState.loggedout;
+      loginController.loginState = LoginState.loggedOut;
     }
     await litSearchController.getCategories();
   }
@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
         // Define your dark theme here
       ),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: kred),
+        colorScheme: ColorScheme.fromSeed(seedColor: kRed),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,

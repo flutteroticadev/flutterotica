@@ -30,7 +30,7 @@ class LoginController extends GetxController {
   set obscurePassword(bool value) => _obscurePassword.value = value;
 
   Future<bool> isTokenValid() async {
-    final token = prefs.getString('token') ?? '';
+    final token = preferences.getString('token') ?? '';
     if (token.isEmpty) {
       return false;
     }
@@ -45,7 +45,7 @@ class LoginController extends GetxController {
       await refreshToken();
       // ignore: avoid_print
       print("token expired");
-      if (loginState == LoginState.loggedin) {
+      if (loginState == LoginState.loggedIn) {
         await listController.fetchLists();
 
         // ignore: avoid_print
@@ -62,12 +62,12 @@ class LoginController extends GetxController {
   Future<Token> login() async {
     Token responseToken = await api.login(username, password);
     if (responseToken.token != null) {
-      loginState = LoginState.loggedin;
+      loginState = LoginState.loggedIn;
       token = responseToken;
 
-      prefs.setString('token', token.token!);
-      prefs.setString('username', username);
-      prefs.setString('password', password);
+      preferences.setString('token', token.token!);
+      preferences.setString('username', username);
+      preferences.setString('password', password);
       toast('Logged In!');
 
       await listController.fetchLists();
@@ -82,10 +82,10 @@ class LoginController extends GetxController {
     Token responseToken = await api.fetchToken();
     if (responseToken.token != null) {
       await listController.fetchLists();
-      loginState = LoginState.loggedin;
+      loginState = LoginState.loggedIn;
       token = responseToken;
 
-      prefs.setString('token', token.token!);
+      preferences.setString('token', token.token!);
     } else {
       loginState = LoginState.failure;
     }

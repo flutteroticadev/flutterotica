@@ -34,7 +34,7 @@ class _ListScreenState extends State<ListScreen> {
 
   Widget body() {
     return Obx(() {
-      if (loginController.loginState == LoginState.loggedin) {
+      if (loginController.loginState == LoginState.loggedIn) {
         return const Column(
           children: [
             Expanded(
@@ -42,7 +42,7 @@ class _ListScreenState extends State<ListScreen> {
             ),
           ],
         );
-      } else if (loginController.loginState == LoginState.loggedout || loginController.loginState == LoginState.failure) {
+      } else if (loginController.loginState == LoginState.loggedOut || loginController.loginState == LoginState.failure) {
         return const LoggedInError(
           text: "You must be logged in to view your lists",
         );

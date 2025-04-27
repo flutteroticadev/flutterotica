@@ -224,7 +224,7 @@ class _StoryScreenState extends State<StoryScreen> {
               floatingActionButton: Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: SpeedDial(
-                  backgroundColor: kred,
+                  backgroundColor: kRed,
                   visible: isFabVisible,
                   animatedIcon: AnimatedIcons.menu_close,
                   children: [
@@ -235,7 +235,7 @@ class _StoryScreenState extends State<StoryScreen> {
                             )
                           : const Icon(
                               Icons.bookmark,
-                              color: kred,
+                              color: kRed,
                             ),
                       label: 'Bookmark',
                       onTap: () async {
@@ -254,7 +254,7 @@ class _StoryScreenState extends State<StoryScreen> {
                     SpeedDialChild(
                       child: Icon(
                         Icons.file_download_outlined,
-                        color: isDownloaded ? kred : null,
+                        color: isDownloaded ? kRed : null,
                       ),
                       label: isDownloaded ? 'Remove from Downloads' : 'Add to Downloads',
                       onTap: () {
@@ -326,8 +326,8 @@ class _StoryScreenState extends State<StoryScreen> {
                                   color: Colors.white,
                                 ),
                                 'u': Style(
-                                  color: kred,
-                                  textDecorationColor: kred,
+                                  color: kRed,
+                                  textDecorationColor: kRed,
                                 ),
                                 'i': Style(
                                   color: Colors.white60,
@@ -366,7 +366,7 @@ class _StoryScreenState extends State<StoryScreen> {
               effect: const ExpandingDotsEffect(
                 dotHeight: 8,
                 dotWidth: 8,
-                activeDotColor: kred,
+                activeDotColor: kRed,
               ),
             ),
           ),

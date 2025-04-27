@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:lit_reader/models/read_history.dart';
@@ -43,12 +45,12 @@ class DBHelper {
     try {
       List<ReadHistory> history = [];
       if (key != null) {
-        var searchresult = await historyStore.record(key).get(db);
-        if (searchresult != null) {
-          if (searchresult is String) {
-            history.add(ReadHistory.fromJson(jsonDecode(searchresult) as Map<String, dynamic>));
+        var searchResult = await historyStore.record(key).get(db);
+        if (searchResult != null) {
+          if (searchResult is String) {
+            history.add(ReadHistory.fromJson(jsonDecode(searchResult) as Map<String, dynamic>));
           } else {
-            history.add(ReadHistory.fromJson(searchresult as Map<String, dynamic>));
+            history.add(ReadHistory.fromJson(searchResult as Map<String, dynamic>));
           }
         }
       } else {
@@ -88,12 +90,12 @@ class DBHelper {
     try {
       List<StoryDownload> downloads = [];
       if (key != null) {
-        var searchresult = await downloadStore.record(key).get(db);
-        if (searchresult != null) {
-          if (searchresult is String) {
-            downloads.add(StoryDownload.fromJson(jsonDecode(searchresult) as Map<String, dynamic>));
+        var searchResult = await downloadStore.record(key).get(db);
+        if (searchResult != null) {
+          if (searchResult is String) {
+            downloads.add(StoryDownload.fromJson(jsonDecode(searchResult) as Map<String, dynamic>));
           } else {
-            downloads.add(StoryDownload.fromJson(searchresult as Map<String, dynamic>));
+            downloads.add(StoryDownload.fromJson(searchResult as Map<String, dynamic>));
           }
         }
       } else {

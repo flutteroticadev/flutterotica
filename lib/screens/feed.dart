@@ -49,7 +49,7 @@ class _FeedScreenState extends State<FeedScreen> {
   void initState() {
     _pagingController = PagingController(firstPageKey: 1);
     _pagingController.addPageRequestListener((pageKey) {
-      if (loginController.loginState == LoginState.loggedin) {
+      if (loginController.loginState == LoginState.loggedIn) {
         _fetchPage(pageKey);
       }
     });
@@ -71,7 +71,7 @@ class _FeedScreenState extends State<FeedScreen> {
 
   Widget body() {
     return Obx(() {
-      if (loginController.loginState == LoginState.loggedin) {
+      if (loginController.loginState == LoginState.loggedIn) {
         return Column(
           children: [
             Expanded(
@@ -90,7 +90,7 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
           ],
         );
-      } else if (loginController.loginState == LoginState.loggedout || loginController.loginState == LoginState.failure) {
+      } else if (loginController.loginState == LoginState.loggedOut || loginController.loginState == LoginState.failure) {
         return const Padding(
           padding: EdgeInsets.symmetric(vertical: 1),
           child: LoggedInError(

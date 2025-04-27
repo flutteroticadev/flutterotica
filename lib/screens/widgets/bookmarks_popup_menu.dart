@@ -49,7 +49,7 @@ class _BookmarksPopupMenuState extends State<BookmarksPopupMenu> {
   }
 
   Future<void> fetchListData() async {
-    if (loginController.loginState == LoginState.loggedout) {
+    if (loginController.loginState == LoginState.loggedOut) {
       return;
     }
 
@@ -99,7 +99,7 @@ class _BookmarksPopupMenuState extends State<BookmarksPopupMenu> {
             listitem.inList
                 ? const Icon(
                     Icons.bookmark,
-                    color: kred,
+                    color: kRed,
                   )
                 : const Icon(Icons.bookmark_border),
             Text(listitem.list.title),

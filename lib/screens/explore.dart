@@ -124,7 +124,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         trailing: Text(
                           item.count.toString(),
                           style: const TextStyle(
-                            color: kred,
+                            color: kRed,
                             fontSize: 14,
                           ),
                         ),
@@ -197,7 +197,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 InkWell(
-                                  child: const LitBadge(text: 'Top', color: khotTag),
+                                  child: const LitBadge(text: 'Top', color: kHotTag),
                                   onTap: () {
                                     SearchConfig searchConfig = SearchConfig.categorySearch(
                                       selectedCategory: item.id,
@@ -207,7 +207,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                   },
                                 ),
                                 InkWell(
-                                  child: const LitBadge(text: 'New', color: knewTag),
+                                  child: const LitBadge(text: 'New', color: kNewTag),
                                   onTap: () {
                                     SearchConfig searchConfig = SearchConfig.categorySearch(
                                       selectedCategory: item.id,
@@ -218,7 +218,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                   },
                                 ),
                                 InkWell(
-                                  child: const LitBadge(text: 'Random', color: kwinnerTag),
+                                  child: const LitBadge(text: 'Random', color: kWinnerTag),
                                   onTap: () {
                                     SearchConfig searchConfig = SearchConfig.categorySearch(
                                       selectedCategory: item.id,

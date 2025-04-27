@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class LogItem {
@@ -23,7 +24,9 @@ class LogController extends GetxController {
       popLog();
     }
     _logs.add(logItem);
-    print(logItem.toString());
+    if (kDebugMode) {
+      print(logItem.toString());
+    }
   }
 
   void clearLogs() {

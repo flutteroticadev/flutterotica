@@ -64,7 +64,7 @@ class StoryItem extends StatelessWidget {
             },
             icon: Icons.info,
             // foregroundColor: kred,
-            backgroundColor: kwinnerTag,
+            backgroundColor: kWinnerTag,
             label: 'Details',
           ),
           if (submission.author != null)
@@ -78,7 +78,7 @@ class StoryItem extends StatelessWidget {
               },
               icon: Icons.person,
               // foregroundColor: kred,
-              backgroundColor: kred,
+              backgroundColor: kRed,
               label: 'Author',
             ),
         ],
@@ -91,7 +91,7 @@ class StoryItem extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         border: Border(
-          bottom: BorderSide(width: 0.5, color: kred),
+          bottom: BorderSide(width: 0.5, color: kRed),
         ),
       ),
       child: ListTile(
@@ -129,10 +129,10 @@ class StoryItem extends StatelessWidget {
           const SizedBox(
             width: 5,
           ),
-          if (story.isNew) const LitBadge(text: 'N', color: knewTag),
-          if (story.isHot) const LitBadge(text: 'H', color: khotTag),
-          if (story.writersPick) const LitBadge(text: 'E', color: kwriterTag),
-          if (story.contestWinner == 1) const LitBadge(text: 'W', color: kwinnerTag),
+          if (story.isNew) const LitBadge(text: 'N', color: kNewTag),
+          if (story.isHot) const LitBadge(text: 'H', color: kHotTag),
+          if (story.writersPick) const LitBadge(text: 'E', color: kWriterTag),
+          if (story.contestWinner == 1) const LitBadge(text: 'W', color: kWinnerTag),
         ],
       ),
     );
@@ -179,7 +179,7 @@ class StoryItem extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                color: kred,
+                color: kRed,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -221,7 +221,7 @@ class StoryItem extends StatelessWidget {
             "${story.rateAll} (${story.viewCount}) by ${story.authorname} on ${story.dateApprove}",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontStyle: FontStyle.italic, color: kred),
+            style: const TextStyle(fontStyle: FontStyle.italic, color: kRed),
           ),
         ],
       ),
