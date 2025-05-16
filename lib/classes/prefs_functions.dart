@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutterotica/env/global.dart';
 import 'package:flutterotica/models/submission.dart';
-import 'package:loggy/loggy.dart';
 
 class PrefsFunctions {
   void saveScrollPosition({required Submission submission, required ScrollController scrollController}) async {

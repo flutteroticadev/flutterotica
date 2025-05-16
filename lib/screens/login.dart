@@ -4,7 +4,7 @@ import 'package:flutterotica/env/consts.dart';
 import 'package:flutterotica/env/global.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

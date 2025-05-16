@@ -22,7 +22,6 @@ class _LitCategoriesState extends State<LitCategories> {
     categoryItems = [
       ...litSearchController.categories
           .map((cat) => DropdownMenuItem<String>(value: cat.id.toString(), child: Flexible(child: Text(cat.name))))
-          .toList()
     ];
     DropdownMenuItem<String> itemToMove =
         categoryItems.removeAt(categoryItems.indexOf(categoryItems.where((cat) => cat.value == "1").first));

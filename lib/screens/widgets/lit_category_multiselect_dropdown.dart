@@ -25,7 +25,7 @@ class _LitMultiCategoriesState extends State<LitMultiCategories> {
     super.initState();
     //categories.sort((a, b) => a.name.compareTo(b.name));
     categoryItems = [
-      ...litSearchController.categories.map((cat) => ValueItem(value: cat.id.toString(), label: cat.name)).toList()
+      ...litSearchController.categories.map((cat) => ValueItem(value: cat.id.toString(), label: cat.name))
     ];
     ValueItem? allCatItem = categoryItems.where((cat) => cat.value == "1").firstOrNull;
     if (allCatItem != null && categoryItems.indexOf(allCatItem) != 0) {
@@ -48,7 +48,7 @@ class _LitMultiCategoriesState extends State<LitMultiCategories> {
           controller: _controller,
           onOptionSelected: (options) {
             widget.searchController.selectedCategory = [
-              ...options.where((option) => option.value != "1").map((option) => option.value).toList()
+              ...options.where((option) => option.value != "1").map((option) => option.value)
             ];
             prefsFunctions.saveSearchCategories(widget.searchController.selectedCategory);
           },
@@ -58,7 +58,7 @@ class _LitMultiCategoriesState extends State<LitMultiCategories> {
                 .where((cat) => widget.searchController.selectedCategory.isNotEmpty
                     ? (widget.searchController.selectedCategory.contains(cat.value) && cat.value != "1")
                     : cat.value == "1")
-                .toList()
+
           ],
           selectedOptionTextColor: Colors.white,
           selectedOptionBackgroundColor: kRed,

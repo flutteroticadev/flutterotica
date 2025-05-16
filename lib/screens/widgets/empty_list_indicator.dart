@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EmptyListIndicator extends StatefulWidget {
-  const EmptyListIndicator({Key? key, this.text, this.subtext}) : super(key: key);
+  const EmptyListIndicator({super.key, this.text, this.subtext});
 
   final String? text;
   final String? subtext;
