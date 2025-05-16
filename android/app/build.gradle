@@ -28,15 +28,15 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-
 android {
     namespace "com.literotica.flutterotica"
     compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    //ndkVersion flutter.ndkVersion
+    ndkVersion "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
@@ -72,7 +72,7 @@ android {
             // Signing with the debug keys for now,
             // so `flutter run --release` works.
             signingConfig = signingConfigs.debug
-            signingConfig = signingConfigs.release
+            //signingConfig = signingConfigs.release
         }
     }
 }
