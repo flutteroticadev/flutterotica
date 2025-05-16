@@ -44,6 +44,6 @@ app.*.map.json
 /macos
 /web
 
-# Project files (what is this and why ignore them?)
+# Java KeyStore files used for signing the Android APK
 upload-keystore.jks
 upload-keystore.jks.base64
