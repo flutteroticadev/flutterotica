@@ -10,10 +10,8 @@ class SearchFilter extends StatefulWidget {
 class _SearchFilterState extends State<SearchFilter> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Column(
+    return const Column(
         children: [],
-      ),
     );
   }
 }

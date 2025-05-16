@@ -1,27 +1,26 @@
 import 'package:flutter/widgets.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:loggy/loggy.dart';
 
 class PrefsFunctions {
   void saveScrollPosition({required Submission submission, required ScrollController scrollController}) async {
-    prefs.setDouble('${submission.url}_scrollPosition', scrollController.offset);
+    preferences.setDouble('${submission.url}_scrollPosition', scrollController.offset);
   }
 
   void saveCurrentPage({required Submission submission, required PageController controller}) async {
     if (controller.page != null) {
-      prefs.setInt('${submission.url}_currentpage', controller.page!.round());
-      // ignore: avoid_print
-      print("current page: ${controller.page!.round()}");
+      preferences.setInt('${submission.url}_currentPage', controller.page!.round());
     }
   }
 
   int getLastPage({required Submission submission}) {
-    int lastPage = prefs.getInt('${submission.url}_currentpage') ?? 0;
+    int lastPage = preferences.getInt('${submission.url}_currentPage') ?? 0;
     return lastPage;
   }
 
   double getLastPagePosition({required Submission submission}) {
-    double scrollPosition = prefs.getDouble('${submission.url}_scrollPosition') ?? 0.0;
+    double scrollPosition = preferences.getDouble('${submission.url}_scrollPosition') ?? 0.0;
     return scrollPosition;
   }
 
@@ -33,5 +32,37 @@ class PrefsFunctions {
       controller.jumpToPage(lastPage);
       scrollController.jumpTo(lastPagePosition);
     });
+  }
+
+  void saveSearchCategories(List<String> categories) {
+    preferences.setStringList('searchCategories', categories);
+  }
+
+  List<String> getSearchCategories() {
+    List<String>? csvCategories = preferences.getStringList('searchCategories');
+
+    // init to no categories
+    if (csvCategories == null) {
+      preferences.setStringList('searchCategories', []);
+      return [];
+    }
+
+    return csvCategories;
+  }
+
+  bool getHistoryEnabled() {
+    bool? historyEnabled = preferences.getBool("historyEnabled");
+
+    // init to false
+    if (historyEnabled == null) {
+      preferences.setBool("historyEnabled", false);
+      return false;
+    }
+
+    return historyEnabled;
+  }
+
+  void setHistoryEnabled(bool historyEnabled) {
+    preferences.setBool("historyEnabled", historyEnabled);
   }
 }

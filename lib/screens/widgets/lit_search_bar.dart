@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/controllers/search_controller.dart' as litController;
+import 'package:flutterotica/controllers/search_controller.dart' as lit_controller;
 
 class LitSearchBar extends StatelessWidget {
   const LitSearchBar({
@@ -14,7 +14,7 @@ class LitSearchBar extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   // final String? initialValue;
   final TextEditingController? searchFieldTextController;
-  final litController.SearchController? litSearchController;
+  final lit_controller.SearchController? litSearchController;
 
   final void Function()? onChanged;
   final double margin;

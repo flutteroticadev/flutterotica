@@ -1,4 +1,4 @@
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class ReadHistory {
   final String url;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/models/favorite_lists.dart';
+import 'package:flutterotica/models/favorite_lists.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({

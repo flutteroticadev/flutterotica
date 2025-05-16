@@ -1,12 +1,11 @@
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
 
-import 'package:lit_reader/models/read_history.dart';
-import 'package:lit_reader/models/story_download.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/read_history.dart';
+import 'package:flutterotica/models/story_download.dart';
+import 'package:loggy/loggy.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 
 class DBHelper {
@@ -28,16 +27,17 @@ class DBHelper {
   }
 
   addHistory(String key, ReadHistory value) async {
-    try {
-      print("adding history for $key");
-      final record = historyStore.record(key);
-      final val = jsonEncode(value.toJson());
+    if (prefsFunctions.getHistoryEnabled()) {
+      try {
+        final record = historyStore.record(key);
+        final val = jsonEncode(value.toJson());
 
-      await record.put(db, val);
-      print("history added for $key");
-      print(record);
-    } catch (e) {
-      print(e);
+        await record.put(db, val);
+
+        logInfo(record);
+      } catch (e) {
+        logError(e);
+      }
     }
   }
 
@@ -64,10 +64,9 @@ class DBHelper {
         }
       }
 
-      print(history.length);
       return history..sort((ReadHistory a, ReadHistory b) => b.lastReadDate!.compareTo(a.lastReadDate!));
     } catch (e) {
-      print(e);
+      logError(e);
       return [];
     }
   }
@@ -110,7 +109,7 @@ class DBHelper {
       }
       return downloads..sort((StoryDownload a, StoryDownload b) => b.lastReadDate!.compareTo(a.lastReadDate!));
     } catch (e) {
-      print(e);
+      logError(e);
       return [];
     }
   }

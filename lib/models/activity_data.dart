@@ -1,7 +1,7 @@
-// import 'package:lit_reader/models/author.dart';
-// import 'package:lit_reader/models/categoryInfo.dart';
-import 'package:lit_reader/models/submission.dart';
-// import 'package:lit_reader/models/tag.dart';
+// import 'package:flutterotica/models/author.dart';
+// import 'package:flutterotica/models/category_info.dart';
+import 'package:flutterotica/models/submission.dart';
+// import 'package:flutterotica/models/tag.dart';
 
 class ActivityData {
   final int id;

@@ -1,6 +1,6 @@
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/models/links.dart';
-import 'package:lit_reader/models/works_meta.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/models/links.dart';
+import 'package:flutterotica/models/works_meta.dart';
 
 class Works {
   final List<Submission> data;

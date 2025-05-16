@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/author.dart';
-import 'package:lit_reader/screens/story copy.dart';
-import 'package:lit_reader/screens/story_details.dart';
-import 'package:lit_reader/screens/widgets/lit_badge.dart';
-import 'package:lit_reader/screens/widgets/lit_tags.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/author.dart';
+import 'package:flutterotica/screens/story.dart';
+import 'package:flutterotica/screens/story_details.dart';
+import 'package:flutterotica/screens/widgets/lit_badge.dart';
+import 'package:flutterotica/screens/widgets/lit_tags.dart';
 
 class StoryItem extends StatelessWidget {
   const StoryItem({super.key, required this.submission, this.onDelete});
@@ -56,7 +56,7 @@ class StoryItem extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: (context) {
-              knavigatorKey.currentState!.push(MaterialPageRoute(
+              globalNavigatorKey.currentState!.push(MaterialPageRoute(
                 builder: (context) => StoryDetailsScreen(
                   submission: submission,
                 ),
@@ -70,7 +70,7 @@ class StoryItem extends StatelessWidget {
           if (submission.author != null)
             SlidableAction(
               onPressed: (context) {
-                knavigatorKey.currentState!.push(MaterialPageRoute(
+                globalNavigatorKey.currentState!.push(MaterialPageRoute(
                   builder: (context) => AuthorScreen(
                     author: submission.author!,
                   ),
@@ -96,14 +96,14 @@ class StoryItem extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          knavigatorKey.currentState!.push(MaterialPageRoute(
+          globalNavigatorKey.currentState!.push(MaterialPageRoute(
             builder: (context) => StoryScreen(
               submission: story,
             ),
           ));
         },
         onLongPress: () {
-          knavigatorKey.currentState!.push(MaterialPageRoute(
+          globalNavigatorKey.currentState!.push(MaterialPageRoute(
             builder: (context) => StoryDetailsScreen(
               submission: story,
             ),

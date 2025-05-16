@@ -1,25 +1,23 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lit_reader/controllers/dio_controller.dart';
-import 'package:lit_reader/controllers/history_download_screen_controller.dart';
-import 'package:lit_reader/controllers/lists_controller.dart';
-import 'package:lit_reader/controllers/log_controller.dart';
-import 'package:lit_reader/controllers/login_controller.dart';
-import 'package:lit_reader/controllers/search_controller.dart' as searchController;
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/screens/home.dart';
-import 'package:logging/logging.dart';
+import 'package:flutter_loggy/flutter_loggy.dart';
+import 'package:flutterotica/controllers/dio_controller.dart';
+import 'package:flutterotica/controllers/history_download_screen_controller.dart';
+import 'package:flutterotica/controllers/lists_controller.dart';
+import 'package:flutterotica/controllers/log_controller.dart';
+import 'package:flutterotica/controllers/login_controller.dart';
+import 'package:flutterotica/controllers/search_controller.dart' as search_controller;
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/screens/home.dart';
+import 'package:loggy/loggy.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 Future<void> main() async {
-  Logger.root.level = Level.ALL; // Log messages emitted at all levels
-  Logger.root.onRecord.listen((record) {
-    if (kDebugMode) {
-      print('${record.level.name}: ${record.time}: ${record.message}');
-    }
-  });
+  Loggy.initLoggy(
+    logPrinter: const PrettyDeveloperPrinter(),
+  );
+
   WidgetsFlutterBinding.ensureInitialized();
   await initSharedPreferences();
   _initServices();
@@ -32,12 +30,11 @@ _initServices() {
     ioc.registerSingleton<LogController>(LogController());
     ioc.registerSingleton<DioController>(DioController());
     ioc.registerSingleton<LoginController>(LoginController());
-    ioc.registerSingleton<searchController.SearchController>(searchController.SearchController());
+    ioc.registerSingleton<search_controller.SearchController>(search_controller.SearchController());
     ioc.registerSingleton<HistoryDownloadController>(HistoryDownloadController());
     ioc.registerSingleton<ListController>(ListController());
   } catch (e) {
-    // ignore: avoid_print
-    print(e);
+    logError(e);
   }
 }
 
@@ -61,6 +58,7 @@ class _MyAppState extends State<MyApp> {
       loginController.loginState = LoginState.loggedOut;
     }
     await litSearchController.getCategories();
+    litSearchController.selectedCategory = prefsFunctions.getSearchCategories();
   }
 
   @override
@@ -74,12 +72,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: knavigatorKey,
-      title: 'Lit Reader',
-      themeMode: ThemeMode.dark, // Enforce dark theme
+      navigatorKey: globalNavigatorKey,
+      title: 'Flutterotica',
+      themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        // Define your dark theme here
       ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: kRed),

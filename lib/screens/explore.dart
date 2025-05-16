@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:lit_reader/classes/search_config.dart';
-import 'package:lit_reader/data/categories.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/tag.dart';
-import 'package:lit_reader/screens/widgets/drawer_widget.dart';
-import 'package:lit_reader/screens/widgets/lit_badge.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:flutterotica/classes/search_config.dart';
+import 'package:flutterotica/data/categories.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/tag.dart';
+import 'package:flutterotica/screens/widgets/drawer_widget.dart';
+import 'package:flutterotica/screens/widgets/lit_badge.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
@@ -20,7 +19,6 @@ class ExploreScreen extends StatefulWidget {
 class _ExploreScreenState extends State<ExploreScreen> {
   final PagingController<int, Tag> _tagPagingController = PagingController(firstPageKey: 1);
   final PagingController<int, Category> _categoryPagingController = PagingController(firstPageKey: 1);
-  PersistentTabController get tabcontroller => persistentTabcontroller;
 
   List<Category> categoryItems = [];
 

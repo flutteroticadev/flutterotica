@@ -1,4 +1,4 @@
-package com.example.lit_reader
+package com.literotica.flutterotica
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/favorite_lists.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/favorite_lists.dart';
 
 class ListController extends GetxController {
   final _list = <Lists>[].obs;

@@ -1,13 +1,11 @@
 import 'package:get/get.dart';
-import 'package:lit_reader/data/categories.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/category_search_result.dart';
-import 'package:lit_reader/models/search_result.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:logging/logging.dart';
-
-final _logger = Logger('SearchController');
+import 'package:flutterotica/data/categories.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/category_search_result.dart';
+import 'package:flutterotica/models/search_result.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:loggy/loggy.dart';
 
 class SearchController extends GetxController {
   final _searchTerm = ''.obs;
@@ -128,44 +126,45 @@ class SearchController extends GetxController {
       List<Submission> results = result.data;
       searchResults = results;
 
-      _logger.info('page: $page');
-      _logger.info('maxPage: $maxPage');
+      logInfo('page: $page');
+      logInfo('maxPage: $maxPage');
       return;
     } else if (categorySearch && categorySearchId != null) {
-      CategorySearchResult result =
-          await api.getCategoryStories(categoryId: categorySearchId ?? 1, page: page, random: random, newOnly: newOnly);
+      CategorySearchResult result = await api.getCategoryStories(
+          categoryId: categorySearchId ?? 1,
+          page: page,
+          random: random,
+          newOnly: newOnly);
+
       if (page == 1 && result.meta != null) {
-        {
-          maxPage = (result.meta!.pages);
-        }
-
+        maxPage = (result.meta!.pages);
         List<Submission> results = result.data;
         searchResults = results;
 
-        _logger.info('page: $page');
-        _logger.info('maxPage: $maxPage');
+        logInfo('page: $page');
+        logInfo('maxPage: $maxPage');
         return;
-      } else {
-        if (searchTerm.isEmpty || searchTerm.length < 3) {
-          return;
-        }
-        SearchResult result = await api.beginSearch(searchTerm,
-            page: page,
-            categories: selectedCategory,
-            isPopular: isPopular,
-            isWinner: isWinner,
-            isEditorsChoice: isEditorsChoice,
-            sortOrder: sortString);
-        if (page == 1 && result.meta != null) {
-          maxPage = (result.meta!.total / (result.meta!.pageSize)).ceil();
-        }
-
-        List<Submission> results = result.data;
-        searchResults = results;
-
-        _logger.info('page: $page');
-        _logger.info('maxPage: $maxPage');
       }
+    } else {
+      if (searchTerm.isEmpty || searchTerm.length < 3) {
+        return;
+      }
+      SearchResult result = await api.beginSearch(searchTerm,
+          page: page,
+          categories: selectedCategory,
+          isPopular: isPopular,
+          isWinner: isWinner,
+          isEditorsChoice: isEditorsChoice,
+          sortOrder: sortString);
+      if (page == 1 && result.meta != null) {
+        maxPage = (result.meta!.total / (result.meta!.pageSize)).ceil();
+      }
+
+      List<Submission> results = result.data;
+      searchResults = results;
+
+      logInfo('page: $page');
+      logInfo('maxPage: $maxPage');
     }
   }
 }

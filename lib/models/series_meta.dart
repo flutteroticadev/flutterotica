@@ -2,16 +2,16 @@ class Meta {
   final int id;
   final String title;
   final String url;
-  final String created_at;
-  final String updated_at;
+  final String createdAt;
+  final String updatedAt;
   final List<int> order;
 
   Meta({
     required this.id,
     required this.title,
     required this.url,
-    required this.created_at,
-    required this.updated_at,
+    required this.createdAt,
+    required this.updatedAt,
     required this.order,
   });
 
@@ -20,8 +20,8 @@ class Meta {
       id: json['id'],
       title: json['title'],
       url: json['url'],
-      created_at: json['created_at'],
-      updated_at: json['updated_at'],
+      createdAt: json['created_at'],
+      updatedAt: json['updated_at'],
       order: List<int>.from(json['order'].map((x) => x)),
     );
   }
@@ -31,8 +31,8 @@ class Meta {
       'id': id,
       'title': title,
       'url': url,
-      'created_at': created_at,
-      'updated_at': updated_at,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
       'order': order,
     };
   }

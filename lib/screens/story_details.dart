@@ -1,18 +1,19 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:lit_reader/classes/search_config.dart';
-import 'package:lit_reader/data/categories.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/author.dart';
-import 'package:lit_reader/screens/authors_stories.dart';
-import 'package:lit_reader/screens/series.dart';
-import 'package:lit_reader/screens/similar.dart';
-import 'package:lit_reader/screens/widgets/bookmarks_popup_menu.dart';
-import 'package:lit_reader/screens/widgets/lit_badge.dart';
-import 'package:lit_reader/screens/widgets/lit_tags.dart';
+import 'package:flutterotica/classes/search_config.dart';
+import 'package:flutterotica/data/categories.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/author.dart';
+import 'package:flutterotica/screens/authors_stories.dart';
+import 'package:flutterotica/screens/series.dart';
+import 'package:flutterotica/screens/similar.dart';
+import 'package:flutterotica/screens/widgets/bookmarks_popup_menu.dart';
+import 'package:flutterotica/screens/widgets/lit_badge.dart';
+import 'package:flutterotica/screens/widgets/lit_tags.dart';
+import 'package:loggy/loggy.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class StoryDetailsScreen extends StatefulWidget {
@@ -27,7 +28,6 @@ class StoryDetailsScreen extends StatefulWidget {
 class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
   bool isBusy = true;
   late List<int> existingLists;
-// Author? author;
 
   @override
   void initState() {
@@ -144,7 +144,7 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
           Wrap(
             children: [
               litButton("Chapters", () {
-                knavigatorKey.currentState!.push(MaterialPageRoute(
+                globalNavigatorKey.currentState!.push(MaterialPageRoute(
                     builder: (context) => SeriesScreen(
                           story: widget.submission,
                         )));
@@ -152,14 +152,14 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
               const SizedBox(width: 10),
               if (widget.submission.author != null)
                 litButton("By Author", () {
-                  knavigatorKey.currentState!.push(MaterialPageRoute(
+                  globalNavigatorKey.currentState!.push(MaterialPageRoute(
                       builder: (context) => AuthorsStoriesScreen(
                             author: widget.submission.author!,
                           )));
                 }),
               const SizedBox(width: 10),
               litButton("Similar Stories", () {
-                knavigatorKey.currentState!.push(MaterialPageRoute(
+                globalNavigatorKey.currentState!.push(MaterialPageRoute(
                     builder: (context) => SimilarScreen(
                           story: widget.submission,
                         )));
@@ -181,8 +181,8 @@ class _StoryDetailsScreenState extends State<StoryDetailsScreen> {
               "Author",
               trailing: GestureDetector(
                 onTap: () {
-                  print(widget.submission.author!.userid.toString());
-                  knavigatorKey.currentState!.push(MaterialPageRoute(
+                  logInfo(widget.submission.author!.userid.toString());
+                  globalNavigatorKey.currentState!.push(MaterialPageRoute(
                       builder: (context) => AuthorScreen(
                             author: widget.submission.author!,
                           )));

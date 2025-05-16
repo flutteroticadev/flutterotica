@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/token.dart';
-import 'package:lit_reader/services/session_manager.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/token.dart';
+import 'package:flutterotica/services/session_manager.dart';
+import 'package:loggy/loggy.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 class LoginController extends GetxController {
@@ -34,26 +35,23 @@ class LoginController extends GetxController {
     if (token.isEmpty) {
       return false;
     }
-    Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
 
+    Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
     int timestamp = decodedToken['exp'];
     DateTime expdate = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-    // ignore: avoid_print
-    print("token expires at $expdate");
+    logInfo("token expires at $expdate");
+
     if (DateTime.now().isAfter(expdate.toLocal())) {
       // loginState = LoginState.loggedout;
       await refreshToken();
-      // ignore: avoid_print
-      print("token expired");
+      logInfo("token expired");
       if (loginState == LoginState.loggedIn) {
         await listController.fetchLists();
-
-        // ignore: avoid_print
-        print("token refreshed");
+        logInfo("token refreshed");
         return true;
       }
-      // ignore: avoid_print
-      print("unable to refresh token");
+
+      logWarning("unable to refresh token");
       return false;
     }
     return true;

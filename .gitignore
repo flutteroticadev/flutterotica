@@ -1,14 +1,9 @@
 # Miscellaneous
 *.class
 *.log
-*.pyc
-*.swp
 .DS_Store
-.atom/
 .buildlog/
 .history
-.svn/
-migrate_working_dir/
 
 # IntelliJ related
 *.iml
@@ -16,10 +11,10 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Other IDEs
+.vscode/
+.atom/
+*.swp
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -41,19 +36,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/.cxx
 
-
-#Project downloads
-/downloads
+# Flutter Platforms (why are these ignored?)
 /ios
-
-/windows
 /linux
 /macos
 /web
-/IconKitchen-Output
-.IconKitchen-Output.zip
 
-#Project files
+# Project files (what is this and why ignore them?)
 upload-keystore.jks
 upload-keystore.jks.base64

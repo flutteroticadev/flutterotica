@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/widgets/paged_list_view.dart';
-import 'package:lit_reader/screens/widgets/story_item.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/widgets/paged_list_view.dart';
+import 'package:flutterotica/screens/widgets/story_item.dart';
 
 class SeriesScreen extends StatefulWidget {
   const SeriesScreen({super.key, required this.story});

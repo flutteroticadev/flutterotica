@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/screens/explore.dart';
-import 'package:lit_reader/screens/feed.dart';
-import 'package:lit_reader/screens/history_downloads.dart';
-import 'package:lit_reader/screens/lists.dart';
-import 'package:lit_reader/screens/search.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/screens/explore.dart';
+import 'package:flutterotica/screens/feed.dart';
+import 'package:flutterotica/screens/history_downloads.dart';
+import 'package:flutterotica/screens/lists.dart';
+import 'package:flutterotica/screens/search.dart';
 // import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Obx(
         () => PersistentTabView(
           gestureNavigationEnabled: true,
-          controller: persistentTabcontroller,
+          controller: persistentTabController,
           navBarHeight: kBottomNavigationBarHeight + 5,
           tabs: [
             PersistentTabConfig(

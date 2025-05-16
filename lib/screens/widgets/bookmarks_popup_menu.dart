@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/favorite_list_item.dart';
-import 'package:lit_reader/models/favorite_lists.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/favorite_list_item.dart';
+import 'package:flutterotica/models/favorite_lists.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class BookmarksPopupMenu extends StatefulWidget {
   const BookmarksPopupMenu(

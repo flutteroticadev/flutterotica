@@ -1,4 +1,4 @@
-import 'package:lit_reader/env/consts.dart';
+import 'package:flutterotica/env/consts.dart';
 
 class SearchConfig {
   final bool isTagSearch;

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:lit_reader/classes/dio_logging_intercepter.dart';
+import 'package:flutterotica/classes/dio_logging_intercepter.dart';
 
 class DioController extends GetxController {
   final _dio = Dio(

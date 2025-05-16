@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:lit_reader/classes/search_config.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/widgets/drawer_widget.dart';
-import 'package:lit_reader/screens/widgets/lit_category_multiselect_dropdown.dart';
-import 'package:lit_reader/screens/widgets/lit_search_bar.dart';
-import 'package:lit_reader/screens/widgets/lit_search_tag_bar.dart';
-import 'package:lit_reader/screens/widgets/paged_list_view.dart';
-import 'package:lit_reader/screens/widgets/story_item.dart';
+import 'package:flutterotica/classes/search_config.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/widgets/drawer_widget.dart';
+import 'package:flutterotica/screens/widgets/lit_category_multiselect_dropdown.dart';
+import 'package:flutterotica/screens/widgets/lit_search_bar.dart';
+import 'package:flutterotica/screens/widgets/lit_search_tag_bar.dart';
+import 'package:flutterotica/screens/widgets/paged_list_view.dart';
+import 'package:flutterotica/screens/widgets/story_item.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, this.searchConfig, this.pagingController});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/author.dart';
-import 'package:lit_reader/screens/authors_stories.dart';
-import 'package:lit_reader/screens/widgets/lit_chip.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/author.dart';
+import 'package:flutterotica/screens/authors_stories.dart';
+import 'package:flutterotica/screens/widgets/lit_chip.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AuthorScreen extends StatefulWidget {

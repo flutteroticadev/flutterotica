@@ -1,4 +1,4 @@
-import 'package:lit_reader/models/tag.dart';
+import 'package:flutterotica/models/tag.dart';
 
 class TagSearchResults {
   final Meta meta;

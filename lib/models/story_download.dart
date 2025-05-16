@@ -1,5 +1,5 @@
-import 'package:lit_reader/models/page.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/models/page.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class StoryDownload {
   final String url;

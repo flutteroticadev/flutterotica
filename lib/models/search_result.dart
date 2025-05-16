@@ -1,5 +1,5 @@
-import 'package:lit_reader/models/search_meta.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/models/search_meta.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class SearchResult {
   final Meta? meta;

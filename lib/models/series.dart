@@ -1,5 +1,5 @@
-import 'package:lit_reader/models/series_meta.dart';
-import 'package:lit_reader/models/series_item.dart';
+import 'package:flutterotica/models/series_meta.dart';
+import 'package:flutterotica/models/series_item.dart';
 
 class Series {
   final Meta meta;

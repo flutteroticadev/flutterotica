@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:lit_reader/classes/db_helper.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/story_download.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/widgets/drawer_widget.dart';
-import 'package:lit_reader/screens/widgets/empty_list_indicator.dart';
-import 'package:lit_reader/screens/widgets/lit_search_bar.dart';
-import 'package:lit_reader/screens/widgets/story_item.dart';
+import 'package:flutterotica/classes/db_helper.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/story_download.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/widgets/drawer_widget.dart';
+import 'package:flutterotica/screens/widgets/empty_list_indicator.dart';
+import 'package:flutterotica/screens/widgets/lit_search_bar.dart';
+import 'package:flutterotica/screens/widgets/story_item.dart';
+import 'package:loggy/loggy.dart';
 
 class DownloadScreen extends StatefulWidget {
   const DownloadScreen({super.key});
@@ -73,7 +74,8 @@ class _DownloadScreenState extends State<DownloadScreen> {
     await dbHelper.init();
     await dbHelper.removeDownload(submission.url);
     await _fetchPage();
-    print('Deleted: ${submission.title}');
+
+    logInfo('Deleted: ${submission.title}');
   }
 
   @override
@@ -155,7 +157,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                     onDelete: onDeleteDownload,
                   ),
                   noItemsFoundIndicatorBuilder: (_) => const EmptyListIndicator(
-                    subtext: "Maybe try downloading something",
+                    text: "No stories in your downloads...",
                   ),
                 ),
               ),

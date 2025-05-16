@@ -1,7 +1,7 @@
-import 'package:lit_reader/classes/db_helper.dart';
-import 'package:lit_reader/models/page.dart';
-import 'package:lit_reader/models/story_download.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/classes/db_helper.dart';
+import 'package:flutterotica/models/page.dart';
+import 'package:flutterotica/models/story_download.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class DbFunctions {
   Future<bool> downloadStory({required Submission submission, required List<StoryPage> pages, required bool isDownloaded}) async {

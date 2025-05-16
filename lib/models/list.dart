@@ -1,5 +1,5 @@
-import 'package:lit_reader/models/favorite_lists.dart';
-import 'package:lit_reader/models/list_works.dart';
+import 'package:flutterotica/models/favorite_lists.dart';
+import 'package:flutterotica/models/list_works.dart';
 
 class ListItem {
   final Lists? list;

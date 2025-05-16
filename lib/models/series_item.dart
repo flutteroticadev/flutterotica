@@ -1,4 +1,4 @@
-import 'package:lit_reader/models/categoryInfo.dart';
+import 'package:flutterotica/models/category_info.dart';
 
 class Item {
   final int id;

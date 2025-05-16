@@ -4,26 +4,24 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:lit_reader/data/categories.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/account.dart';
-import 'package:lit_reader/models/activity_wall.dart';
-import 'package:lit_reader/models/author.dart';
-import 'package:lit_reader/models/category_search_result.dart';
-import 'package:lit_reader/models/favorite_lists.dart';
-import 'package:lit_reader/models/list.dart';
-import 'package:lit_reader/models/search_result.dart';
-import 'package:lit_reader/models/story.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/models/tag.dart';
-import 'package:lit_reader/models/tag_search_results.dart';
-import 'package:lit_reader/models/token.dart';
-import 'package:logging/logging.dart';
+import 'package:flutterotica/data/categories.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/account.dart';
+import 'package:flutterotica/models/activity_wall.dart';
+import 'package:flutterotica/models/author.dart';
+import 'package:flutterotica/models/category_search_result.dart';
+import 'package:flutterotica/models/favorite_lists.dart';
+import 'package:flutterotica/models/list.dart';
+import 'package:flutterotica/models/search_result.dart';
+import 'package:flutterotica/models/story.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/models/tag.dart';
+import 'package:flutterotica/models/tag_search_results.dart';
+import 'package:flutterotica/models/token.dart';
+import 'package:loggy/loggy.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-final _logger = Logger('API');
 
 final cookieJar = CookieJar();
 
@@ -48,12 +46,11 @@ class API {
         return Token(token: null, expires: null);
       }
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      logError(e);
       toast(e.toString());
       return Token(token: null, expires: null);
     } finally {
-      //
+
     }
   }
 
@@ -72,7 +69,7 @@ class API {
       }
 
       var tokenResponse = validateResponse.data;
-      _logger.info('Token response: $tokenResponse');
+      logInfo('Token response: $tokenResponse');
 
       Map<String, dynamic> decodedToken = JwtDecoder.decode(tokenResponse);
       int timestamp = decodedToken['exp'];
@@ -81,8 +78,7 @@ class API {
       Token token = Token(token: tokenResponse, expires: expirationDate);
       return token;
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      logError(e);
       toast(e.toString());
       return Token(token: null, expires: null);
     }
@@ -96,7 +92,6 @@ class API {
     }
 
     try {
-      //logout request
       const url = '${authUrl}session/logout';
       final response = await dioController.dio.post(
         url,
@@ -114,15 +109,13 @@ class API {
         final SharedPreferences preferences = await SharedPreferences.getInstance();
         preferences.remove('token');
         loginController.password = "";
-        // preferences.remove('username');
         preferences.remove('password');
         return true;
       } else {
         return false;
       }
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      logError(e);
       toast(e.toString());
       return false;
     } finally {
@@ -133,7 +126,7 @@ class API {
   Future<Story> getStory(String storyURL, {int page = 1}) async {
     try {
       final url = '${apiUrl}stories/$storyURL?params={"contentPage":$page}';
-      _logger.info('Get Story: $url');
+      logInfo('Get Story: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -146,7 +139,7 @@ class API {
 
       return Story.fromJson(response.data);
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return Story.empty();
     } finally {}
@@ -155,7 +148,7 @@ class API {
   Future<List<Submission>> getSeries(int seriesId) async {
     try {
       final url = '${apiUrl}series/$seriesId/works';
-      _logger.info('Get Story Series: $url');
+      logInfo('Get Story Series: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -175,7 +168,7 @@ class API {
   Future<Author> getAuthor(int userId) async {
     try {
       final url = '${apiUrl}authors/$userId';
-      _logger.info('Get Author details : $url');
+      logInfo('Get Author details : $url');
 
       final response = await dioController.dio.get(
         url,
@@ -199,7 +192,7 @@ class API {
   Future<List<Category>> getCategories() async {
     try {
       const url = '${apiUrl}stories/categories?params={"period":"all","language":1,"public_domain":true}';
-      _logger.info('Get Categories: $url');
+      logInfo('Get Categories: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -218,7 +211,7 @@ class API {
 
       return categories;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return [];
     } finally {}
@@ -250,7 +243,7 @@ class API {
     }
     url += '}';
 
-    _logger.info('Called: $url');
+    logInfo('Called: $url');
 
     try {
       final response = await dioController.dio.get(
@@ -266,7 +259,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return SearchResult.empty();
     }
@@ -275,7 +268,7 @@ class API {
   Future<List<Submission>> getSimilarStories(String storyURL) async {
     try {
       final url = '${apiUrl}stories/$storyURL/similar';
-      _logger.info('Get Similar Story: $url');
+      logInfo('Get Similar Story: $url');
       final response = await dioController.dio.get(
         url,
         options: Options(
@@ -289,7 +282,7 @@ class API {
 
       return series;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return [];
     }
@@ -301,7 +294,7 @@ class API {
       if (loginController.username.isNotEmpty && loginController.password.isNotEmpty) {
         await loginController.login();
       } else {
-        return ActivityWall(data: [], new_activity_count: 0);
+        return ActivityWall(data: [], newActivityCount: 0);
       }
     }
 
@@ -313,7 +306,7 @@ class API {
       }
       url += '}';
 
-      _logger.info('Called: $url');
+      logInfo('Called: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -331,12 +324,11 @@ class API {
         return feed;
       }
 
-      return ActivityWall(data: [], new_activity_count: 0);
+      return ActivityWall(data: [], newActivityCount: 0);
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      logError(e);
       toast(e.toString());
-      return ActivityWall(data: [], new_activity_count: 0);
+      return ActivityWall(data: [], newActivityCount: 0);
     } finally {}
   }
 
@@ -366,7 +358,7 @@ class API {
     }
     url += '}';
 
-    _logger.info('Called: $url');
+    logInfo('Called: $url');
 
     try {
       final response = await dioController.dio.get(
@@ -382,7 +374,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return SearchResult.empty();
     }
@@ -410,12 +402,12 @@ class API {
 
     url += '?filter=${jsonEncode(filters)}';
 
-    url += '&appid=$app_id';
-    url += '&apikey=$api_key';
+    url += '&appid=$appId';
+    url += '&apikey=$apiKey';
     url += '&page=$page';
     url += '&limit=$limit';
 
-    _logger.info('Called: $url');
+    logInfo('Called: $url');
 
     try {
       final response = await dioController.dio.get(
@@ -431,7 +423,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return CategorySearchResult.empty();
     }
@@ -463,7 +455,7 @@ class API {
     }
     url += '}';
 
-    _logger.info('Called: $url');
+    logInfo('Called: $url');
 
     try {
       final response = await dioController.dio.get(
@@ -479,7 +471,7 @@ class API {
 
       return searchResult;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return SearchResult.empty();
     }
@@ -514,7 +506,7 @@ class API {
 
       return lists;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return [];
     } finally {
@@ -566,7 +558,7 @@ class API {
 
       return false;
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return false;
     }
@@ -575,7 +567,7 @@ class API {
   Future<List<Tag>> getPopularTags() async {
     try {
       const url = '${apiUrl}tagsportal/top?params={"limit":500,"periodCheck":true,"period":"all","language":1}';
-      _logger.info('Called: $url');
+      logInfo('Called: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -595,7 +587,7 @@ class API {
 
       return [];
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return [];
     } finally {}
@@ -634,7 +626,7 @@ class API {
 
       return [];
     } catch (e) {
-      _logger.info(e);
+      logInfo(e);
       toast(e.toString());
       return [];
     } finally {}
@@ -655,9 +647,7 @@ class API {
 
     try {
       final url = '${apiUrl}users/$userid/lists/$listUrl?params={"s":"${searchTerm ?? ''}","page":"$page","sort":"dateadd"}';
-      _logger.info('Called: $url');
-      // ignore: avoid_print
-      print('Called: $url');
+      logInfo('Called: $url');
 
       final response = await dioController.dio.get(
         url,
@@ -673,8 +663,7 @@ class API {
 
       return listItem;
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      logError(e);
       toast(e.toString());
       return ListItem(list: null, works: null);
     } finally {}

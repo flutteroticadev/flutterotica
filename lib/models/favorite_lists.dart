@@ -30,7 +30,7 @@ class Lists {
       id: json['id'],
       description: json['description'],
       storiesCount: json['stories_count'],
-      submissionType: json['submission_type'],
+      submissionType: json['submission_type'] ?? "null" ,
       title: json['title'],
       urlname: json['urlname'],
       userId: json['user_id'],

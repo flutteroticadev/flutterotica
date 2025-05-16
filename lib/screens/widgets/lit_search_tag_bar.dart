@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:lit_reader/controllers/search_controller.dart' as lit_controller;
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/controllers/search_controller.dart' as lit_controller;
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class LitSearchTagBar extends StatefulWidget {
   const LitSearchTagBar({

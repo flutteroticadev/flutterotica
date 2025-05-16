@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/screens/log_screen.dart';
-import 'package:lit_reader/screens/login.dart';
+import 'package:flutterotica/screens/log_screen.dart';
+import 'package:flutterotica/screens/login.dart';
+
+import '../settings.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -34,6 +36,16 @@ class DrawerWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
               );
             },
           ),

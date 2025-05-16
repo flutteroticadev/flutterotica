@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:lit_reader/classes/db_helper.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/read_history.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/widgets/drawer_widget.dart';
-import 'package:lit_reader/screens/widgets/empty_list_indicator.dart';
-import 'package:lit_reader/screens/widgets/lit_search_bar.dart';
-import 'package:lit_reader/screens/widgets/story_item.dart';
+import 'package:flutterotica/classes/db_helper.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/read_history.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/widgets/drawer_widget.dart';
+import 'package:flutterotica/screens/widgets/empty_list_indicator.dart';
+import 'package:flutterotica/screens/widgets/lit_search_bar.dart';
+import 'package:flutterotica/screens/widgets/story_item.dart';
+import 'package:loggy/loggy.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -34,7 +35,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   Future<void> _fetchPage() async {
     try {
-      print("fetch history page");
       DBHelper dbHelper = DBHelper();
       await dbHelper.init();
       _pagingController.itemList = [];
@@ -74,7 +74,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
     await dbHelper.init();
     await dbHelper.removeHistory(submission.url);
     await _fetchPage();
-    print('Deleted: ${submission.title}');
+
+    logInfo('Deleted: ${submission.title}');
   }
 
   @override
@@ -156,7 +157,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     onDelete: onDeleteHistory,
                   ),
                   noItemsFoundIndicatorBuilder: (_) => const EmptyListIndicator(
-                    subtext: "Maybe try reading something",
+                    text: "No stories in your history..."
                   ),
                 ),
               ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/screens/widgets/drawer_widget.dart';
-import 'package:lit_reader/screens/widgets/lists_list_view.dart';
-import 'package:lit_reader/screens/widgets/logged_in_error.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/screens/widgets/drawer_widget.dart';
+import 'package:flutterotica/screens/widgets/lists_list_view.dart';
+import 'package:flutterotica/screens/widgets/logged_in_error.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});

@@ -1,9 +1,9 @@
-import 'package:lit_reader/models/author.dart';
-import 'package:lit_reader/models/categoryInfo.dart';
-import 'package:lit_reader/models/series.dart';
-import 'package:lit_reader/models/series_item.dart';
-import 'package:lit_reader/models/series_meta.dart';
-import 'package:lit_reader/models/tag.dart';
+import 'package:flutterotica/models/author.dart';
+import 'package:flutterotica/models/category_info.dart';
+import 'package:flutterotica/models/series.dart';
+import 'package:flutterotica/models/series_item.dart';
+import 'package:flutterotica/models/series_meta.dart';
+import 'package:flutterotica/models/tag.dart';
 
 class Submission {
   final int allowVote;
@@ -97,7 +97,7 @@ class Submission {
       allowVote: parseInt(json['allow_vote']),
       allowDownload: parseInt(json['allow_download']),
       author: json['author'] != null ? Author.fromJson(json['author']) : Author.fromJson(json['user']),
-      authorname: json['user']?["username"] ?? json['authorname'],
+      authorname: json['user']?["username"].toString() ?? json['authorname'].toString(),
       categoryInfo: json['category_info'] != null ? CategoryInfo.fromJson(json['category_info']) : null,
       category: (parseInt(json['category_id']) == 0 ? null : parseInt(json['category_id'])) ?? json['category'],
       commentCount: json['comment_count'],
@@ -124,7 +124,7 @@ class Submission {
       followedAuthors: json['followedAuthors'] != null ? List<int>.from(json['followedAuthors'].map((x) => x)) : [],
       series: json['series'] != null && (json['series'] is Map)
           ? Series.fromJson(json['series'])
-          : Series(meta: Meta(id: 0, title: '', url: '', created_at: '', updated_at: '', order: []), items: List<Item>.from([])),
+          : Series(meta: Meta(id: 0, title: '', url: '', createdAt: '', updatedAt: '', order: []), items: List<Item>.from([])),
       readingTime: json['reading_time'] ?? 0,
       wordsCount: json['words_count'] ?? 0,
       contests: json['contests'] != null ? List<dynamic>.from(json['contests'].map((x) => x)) : [],

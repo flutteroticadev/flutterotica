@@ -1,6 +1,6 @@
-import 'package:lit_reader/models/favorite_lists.dart';
-import 'package:lit_reader/models/favorite_listscontent.dart';
-import 'package:lit_reader/models/last_update.dart';
+import 'package:flutterotica/models/favorite_lists.dart';
+import 'package:flutterotica/models/favorite_listscontent.dart';
+import 'package:flutterotica/models/last_update.dart';
 
 class Author {
   final String aim;
@@ -131,7 +131,7 @@ class Author {
       inksAndSeriesCount: json['inks_and_series_count'] ?? 0,
       submissionsCount: int.tryParse(['submissions_count'].toString()) ?? 0,
       userid: json['id'] != null ? int.tryParse(json['id']) : json['userid'],
-      username: json['username'],
+      username: json['username'].toString(),
       userpic: json['userpic'],
       usertitle: json['usertitle'] ?? "",
       favoritesCount: json['favorites_count'] ?? 0,

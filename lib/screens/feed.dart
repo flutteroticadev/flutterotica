@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:lit_reader/env/consts.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/activity_data.dart';
-import 'package:lit_reader/screens/widgets/drawer_widget.dart';
-import 'package:lit_reader/screens/widgets/empty_list_indicator.dart';
-import 'package:lit_reader/screens/widgets/logged_in_error.dart';
-import 'package:lit_reader/screens/widgets/paged_list_view.dart';
-import 'package:lit_reader/screens/widgets/story_item.dart';
+import 'package:flutterotica/env/consts.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/activity_data.dart';
+import 'package:flutterotica/screens/widgets/drawer_widget.dart';
+import 'package:flutterotica/screens/widgets/empty_list_indicator.dart';
+import 'package:flutterotica/screens/widgets/logged_in_error.dart';
+import 'package:flutterotica/screens/widgets/paged_list_view.dart';
+import 'package:flutterotica/screens/widgets/story_item.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({super.key});

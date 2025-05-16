@@ -1,5 +1,5 @@
-import 'package:lit_reader/models/meta.dart';
-import 'package:lit_reader/models/submission.dart';
+import 'package:flutterotica/models/meta.dart';
+import 'package:flutterotica/models/submission.dart';
 
 class Story {
   final Meta? meta;

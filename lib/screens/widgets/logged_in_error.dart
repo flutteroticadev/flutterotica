@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/env/colors.dart';
+import 'package:flutterotica/env/colors.dart';
 
 class LoggedInError extends StatelessWidget {
   const LoggedInError({

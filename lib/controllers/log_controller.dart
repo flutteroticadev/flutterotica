@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:loggy/loggy.dart';
 
 class LogItem {
   final String log;
@@ -24,9 +24,7 @@ class LogController extends GetxController {
       popLog();
     }
     _logs.add(logItem);
-    if (kDebugMode) {
-      print(logItem.toString());
-    }
+    logDebug(logItem);
   }
 
   void clearLogs() {

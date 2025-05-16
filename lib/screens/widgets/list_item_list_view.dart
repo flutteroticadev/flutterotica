@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/models/list.dart';
-import 'package:lit_reader/models/submission.dart';
-import 'package:lit_reader/screens/widgets/lit_search_bar.dart';
-import 'package:lit_reader/screens/widgets/story_item.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/models/list.dart';
+import 'package:flutterotica/models/submission.dart';
+import 'package:flutterotica/screens/widgets/lit_search_bar.dart';
+import 'package:flutterotica/screens/widgets/story_item.dart';
 
 class ListItemListView extends StatefulWidget {
   const ListItemListView({super.key, required this.listName, required this.urlname});

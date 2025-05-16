@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/env/global.dart';
+import 'package:flutterotica/env/global.dart';
 
 class LitCategories extends StatefulWidget {
   const LitCategories({

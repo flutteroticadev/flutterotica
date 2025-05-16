@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:lit_reader/controllers/log_controller.dart';
-import 'package:lit_reader/env/global.dart';
+import 'package:flutterotica/controllers/log_controller.dart';
+import 'package:flutterotica/env/global.dart';
 
 class LogScreen extends StatefulWidget {
   const LogScreen({super.key});

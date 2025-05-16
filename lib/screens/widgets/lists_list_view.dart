@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/screens/widgets/empty_list_indicator.dart';
-import 'package:lit_reader/screens/widgets/list_item.dart';
-import 'package:lit_reader/screens/widgets/list_item_list_view.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/screens/widgets/empty_list_indicator.dart';
+import 'package:flutterotica/screens/widgets/list_item.dart';
+import 'package:flutterotica/screens/widgets/list_item_list_view.dart';
 
 class ListsListView extends StatefulWidget {
   const ListsListView({super.key});

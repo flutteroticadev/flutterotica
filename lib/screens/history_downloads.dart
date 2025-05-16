@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lit_reader/env/global.dart';
-import 'package:lit_reader/screens/downloads.dart';
-import 'package:lit_reader/screens/history.dart';
+import 'package:flutterotica/env/global.dart';
+import 'package:flutterotica/screens/downloads.dart';
+import 'package:flutterotica/screens/history.dart';
 
 class HistoryDownloadsScreen extends StatefulWidget {
   const HistoryDownloadsScreen({super.key});

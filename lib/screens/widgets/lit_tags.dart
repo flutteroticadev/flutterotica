@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lit_reader/env/colors.dart';
-import 'package:lit_reader/models/tag.dart';
+import 'package:flutterotica/env/colors.dart';
+import 'package:flutterotica/models/tag.dart';
 
 class LitTags extends StatelessWidget {
   const LitTags({
